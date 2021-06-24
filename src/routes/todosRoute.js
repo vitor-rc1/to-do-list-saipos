@@ -5,6 +5,11 @@ const router = express.Router();
 
 router
   .route('/todo')
-  .post(todosController.createToDo);
+  .post(todosController.createToDo)
+  .get(todosController.getAllTodos);
+
+router
+.route('/todo/:id')
+.put(todosController.updateToDo);
 
 module.exports = router;

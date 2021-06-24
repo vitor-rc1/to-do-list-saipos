@@ -27,10 +27,6 @@ module.exports = {
       done: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
-      },
-      deleted: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
       }
     });
   },
