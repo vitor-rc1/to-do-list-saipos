@@ -48,8 +48,25 @@ const updateToDo = async (req, res) => {
   }
 };
 
+const deleteTodo = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await todosService.deleteTodo(id);
+    res.status(204).json();
+  } catch (error) {
+    const { message, code } = error;
+    if (code) {
+      return res.status(code).json(message);
+    }
+    return res.status(500).json({
+      message,
+    });
+  }
+};
+
 module.exports = {
   createToDo,
   getAllTodos,
-  updateToDo
+  updateToDo,
+  deleteTodo
 };

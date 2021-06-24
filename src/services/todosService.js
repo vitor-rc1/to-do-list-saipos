@@ -56,8 +56,14 @@ const updateToDo = async (id, name,description, email) => {
   return { message: "Updated successfully"};
 };
 
+const deleteTodo = async (id) => {
+  await idExist(id);
+  await Todo.destroy({ where: { id } });
+}
+
 module.exports = {
   createToDo,
   getAllTodos,
-  updateToDo
+  updateToDo,
+  deleteTodo
 };
