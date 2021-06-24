@@ -3,8 +3,22 @@ const Todo = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     description: DataTypes.TEXT,
     email: DataTypes.STRING,
-    done: DataTypes.BOOLEAN,
-    deleted: DataTypes.BOOLEAN,
+    changes: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    done: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    deleted: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+  },
+  {
+    timestamps: false,
+    tableName: 'todos'
   });
 
   return Todo;

@@ -20,6 +20,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      changes: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
       done: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
@@ -30,7 +34,7 @@ module.exports = {
       }
     });
   },
-  down: async (queryInterface, Sequelize) => {
+  down: async (queryInterface) => {
     await queryInterface.dropTable('todos');
   }
 }
