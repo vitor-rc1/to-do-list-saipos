@@ -167,7 +167,7 @@ body:
 
 ## **POST**
 
-Inserir 3 tarefas aleatórias no to-do
+Inserir 3 tarefas aleatórias no todo
 
 RETORNO
 
