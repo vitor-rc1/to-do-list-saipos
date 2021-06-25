@@ -10,7 +10,7 @@
 ## Para mais informações
 - [Front](https://github.com/vitor-rc1/to-do-list-saipos/tree/main/front-end)
 - [Back](https://github.com/vitor-rc1/to-do-list-saipos/tree/main/back-end)
-- [Rascunho](https://excalidraw.com/#json=6654950482378752,P3E9wNgtkLJ-dU0iBIiT-A)
+- [Rascunho Iterativo](https://excalidraw.com/#json=6654950482378752,P3E9wNgtkLJ-dU0iBIiT-A)
 - [Imagem do Rascunho](https://github.com/vitor-rc1/to-do-list-saipos/blob/main/public/todo_list.png)
 
 ### Tecnologias utilizadas
