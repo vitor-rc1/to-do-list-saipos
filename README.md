@@ -6,7 +6,7 @@
   align="right"
 />
 
-## Bem vindo ao app To Do List da SAIPOS
+## Bem-vindo ao app To Do List da SAIPOS
 ## Para mais informações
 - [Front](https://github.com/vitor-rc1/to-do-list-saipos/tree/main/front-end)
 - [Back](https://github.com/vitor-rc1/to-do-list-saipos/tree/main/back-end)
