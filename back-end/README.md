@@ -1,6 +1,18 @@
 # Getting Started
 
-### Para executar este projeto execute os seguintes comandos
+### Antes de iniciar
+- Crie um arquivo **.env** na na pasta back-end
+- Configure as seguintes variaveis de ambiente
+
+```
+ADMIN_PASSWORD=senha do admin
+POSTGRESQL_USER = usuário do banco
+POSTGRESQL_PASSWORD = senha do banco de dados
+HOSTNAME = endereço do banco postgres
+ACCESS_KEY= access key do mailboxlayer
+```
+
+### Para iniciar este projeto execute os seguintes comandos
 ### `npm install`
 ### `npm prestart`
 ### `npm start`
