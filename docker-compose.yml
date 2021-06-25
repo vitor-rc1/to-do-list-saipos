@@ -1,0 +1,17 @@
+services:
+  db:
+    image: postgres
+    restart: always
+    environment: 
+      POSTGRES_PASSWORD: saipos
+    volumes: 
+      - ./db/data:/var/lib/postgresql/data
+  node:
+    build: "./back-end"
+    restart: always
+    volumes: 
+      - ./back-end:/usr/app
+    ports: 
+      - "3001:3001"
+    depends_on:
+      - db

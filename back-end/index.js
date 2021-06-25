@@ -2,7 +2,7 @@ const express = require('express');
 const todosRoute = require('./src/routes/todosRoute');
 
 const app = express();
-const PORT = 3001;
+const PORT = 3002;
 
 app.use(express.json());
 app.use(todosRoute);
