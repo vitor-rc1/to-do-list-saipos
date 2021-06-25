@@ -20,6 +20,7 @@
   - Thunk
   - Node
   - Express
+  - Sequelize
   - PostgreSQL
 
 ### Proximas melhorias
