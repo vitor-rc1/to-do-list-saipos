@@ -1,33 +1,8 @@
-const joi = require('joi');
 const { Todo } = require('../models');
 const customError = require('../helpers/customError');
-const validateEmail = require('../helpers/mailBoxLayerAPI');
-
-const schemaTodo = joi.object({
-  name: joi.string().min(3).required(),
-  description: joi.string().min(3).required(),
-  email: joi.string().required(),
-});
-
-const validateInputs = (inputs) => {
-  const { error } = schemaTodo.validate(inputs);
-  if (error) {
-    const { details: [{ message }] } = error;
-    throw new customError({ message }, 400);
-  }
-};
-
-const isEmailValid = async (email) => {
-  const { error, did_you_mean } = await validateEmail(email);
-  console.log(error, did_you_mean);
-  if (error) {
-    const { code, type, info } = error;
-    throw new customError({ type, info }, code);
-  }
-  if (did_you_mean){
-    throw new customError({ message: "Invalid email", did_you_mean }, 401);
-  }
-};
+const validateInputs = require('../helpers/validateInputs');
+const validateEmail = require('../helpers/validateEmail');
+const validateAdminPassword = require('../helpers/validateAdminPassword');
 
 const idExist = async (id) => {
   const todo = await Todo.findByPk(id);
@@ -38,17 +13,19 @@ const idExist = async (id) => {
 
 const createToDo = async (name,description, email) => {
   validateInputs({ name, description, email });
-  // await isEmailValid(email);
+  await validateEmail(email);
   await Todo.create({ name, description, email });
   return { message: "Successfully created"};
 };
 
 const getAllTodos = () => Todo.findAll();
 
+const getById = (id) => Todo.findByPk(id);
+
 const updateToDo = async (id, name,description, email) => {
   validateInputs({ name, description, email });
   await idExist(id);
-  // await isEmailValid(email);
+  await validateEmail(email);
   await Todo.update(
     { name, description, email },
     { where: { id } },
@@ -56,14 +33,31 @@ const updateToDo = async (id, name,description, email) => {
   return { message: "Updated successfully"};
 };
 
-const deleteTodo = async (id) => {
+const deleteToDo = async (id) => {
   await idExist(id);
   await Todo.destroy({ where: { id } });
+}
+
+const changeToDoStatus = async (id, adminPassword) => {
+  await idExist(id);
+  const todo = await getById(id);
+  if (!todo.done) {
+    todo.done = true;
+    todo.changes += 1;
+    todo.save();
+  } else if (todo.changes < 2 && validateAdminPassword(adminPassword)) {
+    todo.done = false;
+    todo.save();
+  } else {
+    throw new customError({ message: "Change limit reached" }, 400)
+  }
+  return { message: "Updated successfully"};
 }
 
 module.exports = {
   createToDo,
   getAllTodos,
   updateToDo,
-  deleteTodo
+  deleteToDo,
+  changeToDoStatus,
 };
