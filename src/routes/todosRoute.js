@@ -9,6 +9,10 @@ router
   .get(todosController.getAllTodos);
 
 router
+  .route('/todo/random')
+  .post(todosController.generateRandomToDos)
+
+router
 .route('/todo/:id')
 .post(todosController.changeToDoStatus)
 .put(todosController.updateToDo)

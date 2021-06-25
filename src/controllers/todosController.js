@@ -82,10 +82,26 @@ const changeToDoStatus = async (req, res) => {
   }
 };
 
+const generateRandomToDos = async (_req, res) => {
+  try {
+    const generateRandomToDos = await todosService.generateRandomToDos();
+    res.status(201).json(generateRandomToDos);
+  } catch (error) {
+    const { message, code } = error;
+    if (code) {
+      return res.status(code).json(message);
+    }
+    return res.status(500).json({
+      message,
+    });
+  }
+};
+
 module.exports = {
   createToDo,
   getAllTodos,
   updateToDo,
   deleteToDo,
-  changeToDoStatus
+  changeToDoStatus,
+  generateRandomToDos,
 };

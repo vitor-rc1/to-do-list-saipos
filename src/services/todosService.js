@@ -3,6 +3,7 @@ const customError = require('../helpers/customError');
 const validateInputs = require('../helpers/validateInputs');
 const validateEmail = require('../helpers/validateEmail');
 const validateAdminPassword = require('../helpers/validateAdminPassword');
+const catFactsApi = require('../helpers/catFactsApi');
 
 const idExist = async (id) => {
   const todo = await Todo.findByPk(id);
@@ -18,7 +19,7 @@ const createToDo = async (name,description, email) => {
   return { message: "Successfully created"};
 };
 
-const getAllTodos = () => Todo.findAll();
+const getAllTodos = () => Todo.findAll({ order: ['id']});
 
 const getById = (id) => Todo.findByPk(id);
 
@@ -54,10 +55,19 @@ const changeToDoStatus = async (id, adminPassword) => {
   return { message: "Updated successfully"};
 }
 
+const generateRandomToDos = async () => {
+  const todoRandomFacts = await catFactsApi();
+  await Todo.bulkCreate(
+    todoRandomFacts,
+  );
+  return { message: "Successfully created"};
+}
+
 module.exports = {
   createToDo,
   getAllTodos,
   updateToDo,
   deleteToDo,
   changeToDoStatus,
+  generateRandomToDos,
 };
