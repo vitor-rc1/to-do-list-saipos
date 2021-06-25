@@ -54,38 +54,41 @@ const Todos = ({status}) => {
         </Link>
       </div>
       <table>
-        <tr>
-          <th>Id</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Description</th>
-          <th></th>
-        </tr>
-
-        {tasks.map((task, index) => (
-          <tr key={ index }>
-            <td>{ task.id }</td>
-            <td>{ task.name }</td>
-            <td>{ task.email }</td>
-            <td>{ task.description }</td>
-            <td>
-              <button
-                onClick={() => submitChangeTaskStatus(task.id)}
-                hidden={task.changes>= 2}
-                className={status === 'done'? 'move-button': 'done-button' }
-              >
-                {status === 'pending'? 'Done' : 'Move to Pending'}
-              </button>
-              <button 
-                hidden={status === 'done'}
-                className="delete-button"
-                onClick={() => submitDeleteTask(task.id)}
-              >
-                Delete
-              </button>
-            </td>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Description</th>
+            <th></th>
           </tr>
-        ))}
+        </thead>
+        <tbody>
+          {tasks.map((task, index) => (
+            <tr key={ index }>
+              <td>{ task.id }</td>
+              <td>{ task.name }</td>
+              <td>{ task.email }</td>
+              <td>{ task.description }</td>
+              <td>
+                <button
+                  onClick={() => submitChangeTaskStatus(task.id)}
+                  hidden={task.changes>= 2}
+                  className={status === 'done'? 'move-button': 'done-button' }
+                >
+                  {status === 'pending'? 'Done' : 'Move to Pending'}
+                </button>
+                <button 
+                  hidden={status === 'done'}
+                  className="delete-button"
+                  onClick={() => submitDeleteTask(task.id)}
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   )

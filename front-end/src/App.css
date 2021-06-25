@@ -10,6 +10,14 @@
 button {
   font-family: "Montserrat", sans-serif;
   padding: 5px 10px;
+  border: solid 1px #FFFF;
+  border-radius: 3px;
+  margin: 1px;
+}
+
+button:hover {
+  cursor: pointer;
+  opacity: 0.7;
 }
 
 .header-component {
@@ -53,13 +61,12 @@ input[type=text], input[type=email] {
 
 .todo-component {
   margin: 20px auto;
-  max-width: 800px;
+  max-width: 840px;
   display: flex;
   flex-direction: column;
 }
 
 .navigate {
-  background-color: red;
   display: inline-block;
   padding: 10px 20px;
   margin: 5px;
@@ -79,4 +86,34 @@ input[type=text], input[type=email] {
 
 .selected {
   opacity: 1;
+}
+
+.move-button {
+  background-color: #88a2aa;
+}
+
+.done-button {
+  background-color: #4ABA58;
+}
+
+.create-button {
+  background-color: #52ee67;
+}
+
+.delete-button {
+  background-color: #f42c04;
+}
+
+table {
+  background-color: #bfd7ea;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+tbody tr:nth-child(odd){
+  background-color: #afc6d8;
+}
+
+td {
+  padding: 2px 5px;
 }

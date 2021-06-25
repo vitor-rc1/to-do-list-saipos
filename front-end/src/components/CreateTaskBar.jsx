@@ -64,7 +64,8 @@ const CreateTaskBar = () => {
         
         <button 
           type="submit" 
-          id="create-task" 
+          id="create-task"
+          className="create-button"
           required 
           >
             Create
