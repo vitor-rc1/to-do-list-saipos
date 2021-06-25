@@ -1,11 +1,14 @@
 import React from 'react';
-// import { useSelector } from 'react-redux';
+import Todos from '../components/Todos';
+import Header from '../components/Header';
+import CreateTaskBar from '../components/CreateTaskBar';
 
-function Pending() {
-  // const done = useSelector(state => state.done);
+const Pending = () => {
   return (
     <div>
-      Pending
+      <Header />
+      <CreateTaskBar />
+      <Todos status="pending" />
     </div>
   )
 }

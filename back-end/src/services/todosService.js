@@ -45,10 +45,10 @@ const changeToDoStatus = async (id, adminPassword) => {
   if (!todo.done) {
     todo.done = true;
     todo.changes += 1;
-    todo.save();
+    await todo.save();
   } else if (todo.changes < 2 && validateAdminPassword(adminPassword)) {
     todo.done = false;
-    todo.save();
+    await todo.save();
   } else {
     throw new customError({ message: "Change limit reached" }, 400)
   }

@@ -1,9 +1,14 @@
 import React from 'react';
+import Todos from '../components/Todos';
+import Header from '../components/Header';
+import CreateTaskBar from '../components/CreateTaskBar';
 
-function Done() {
+const Done = () => {
   return (
     <div>
-      Done
+      <Header />
+      <CreateTaskBar />
+      <Todos status="done" />
     </div>
   )
 }
